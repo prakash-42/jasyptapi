@@ -64,13 +64,13 @@ public class JasyptController {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
         config.setPassword(password);
-        config.setAlgorithm(algorithm); // "PBEWithHMACSHA256AndAES_256"
-        config.setKeyObtentionIterations(keyObtentionIterations); // "1000"
+        config.setAlgorithm(algorithm);
+        config.setKeyObtentionIterations(keyObtentionIterations);
         config.setPoolSize("1");
-        config.setProviderName(providerName); // "SunJCE"
-        config.setSaltGeneratorClassName(saltGeneratorClassName); // "org.jasypt.salt.RandomSaltGenerator"
-        config.setIvGeneratorClassName(ivGeneratorClassName); // "org.jasypt.iv.RandomIvGenerator"
-        config.setStringOutputType(stringOutputType); // "base64"
+        config.setProviderName(providerName);
+        config.setSaltGeneratorClassName(saltGeneratorClassName);
+        config.setIvGeneratorClassName(ivGeneratorClassName);
+        config.setStringOutputType(stringOutputType);
         encryptor.setConfig(config);
         return encryptor;
     }

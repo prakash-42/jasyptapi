@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jasypt Encryption/Decryption Helper</title>
+	<link rel="stylesheet" href="jasypt.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="jasypt.js"></script>
+</head>
+<body>
+
+	<h1 align="center">Jasypt Encryption/Decryption Helper</h1>
+
+	<a style="font-size: 20px; margin-left: 200px;" href="file-encryption.html">Click here for file encryption/decryption</a> <br> <br>
+
+	<label class="label-class">Mode:</label>
+	<input class="radio-button" type="radio" id="encrypt" name="mode" value="encrypt">
+	<label for="encrypt" style="font-size: 20px;">encrypt</label>
+
+	<input class="radio-button" type="radio" id="decrypt" name="mode" value="decrypt" checked>
+	<label for="decrypt" style="font-size: 20px;">decrypt</label><br>
+
+	<label class="label-class" for="input">Input String:</label>
+	<input class="input-class" type="text" name="input" id="input"> <br>
+
+	<label class="label-class" for="password">password:</label>
+	<input class="input-class" type="text" name="password" id="password"> <br>
+
+	<label class="label-class" for="algorithm">algorithm:</label>
+	<input class="input-class" type="text" name="algorithm" id="algorithm" value="PBEWITHHMACSHA512ANDAES_256"> <br>
+
+	<label class="label-class" for="keyObtentionIterations">keyObtentionIterations:</label>
+	<input class="input-class" type="text" name="keyObtentionIterations" id="keyObtentionIterations" value="1000"> <br>
+
+	<label class="label-class" for="providerName">providerName:</label>
+	<input class="input-class" type="text" name="providerName" id="providerName" value="SunJCE"> <br>
+
+	<label class="label-class" for="saltGeneratorClassName">saltGeneratorClassName:</label>
+	<input class="input-class" type="text" name="saltGeneratorClassName" id="saltGeneratorClassName" value="org.jasypt.salt.RandomSaltGenerator"> <br>
+
+	<label class="label-class" for="ivGeneratorClassName">ivGeneratorClassName:</label>
+	<input class="input-class" type="text" name="ivGeneratorClassName" id="ivGeneratorClassName" value="org.jasypt.iv.RandomIvGenerator"> <br>
+
+	<label class="label-class" for="stringOutputType">stringOutputType:</label>
+	<input class="input-class" type="text" name="stringOutputType" id="stringOutputType" value="base64"> <br>
+
+	<button class="submit-button" onclick="submit()">Submit</button><br>
+
+	<label class="result" id="result"></label>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.label-class {
+	width: 240px;
+	display: inline-block;
+	text-align: right;
+	margin-bottom: 2px;
+	font-size: 20px;
+}
+.input-class {
+	margin-bottom: 2px;
+	width: 360px;
+	font-size: 20px;
+}
+
+.radio-button {
+	height:20px; 
+	width:20px;
+	vertical-align: bottom;
+	margin-bottom: 2px;
+}
+
+.submit-button {
+	margin-left: 240px;
+	font-size: 20px;
+}
+
+.result {
+	margin-left: 150px;
+	margin-top: 20px;
+	text-align: left;
+	font-size: 20px;
+}

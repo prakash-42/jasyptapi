@@ -6,23 +6,23 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-public class JasyptController {
+public class StringEncryptionController {
 	
 	@GetMapping("/encrypt")
 	public String encryptString(
-			String input,
-			String password,
-			String algorithm,
-			String keyObtentionIterations,
-			String providerName,
-			String saltGeneratorClassName,
-			String ivGeneratorClassName,
-			String stringOutputType) {
+			@RequestParam(required=true) String input,
+			@RequestParam(required=true) String password,
+			@RequestParam(defaultValue="PBEWITHHMACSHA512ANDAES_256") String algorithm,
+			@RequestParam(defaultValue="1000") String keyObtentionIterations,
+			@RequestParam(defaultValue="SunJCE") String providerName,
+			@RequestParam(defaultValue="org.jasypt.salt.RandomSaltGenerator") String saltGeneratorClassName,
+			@RequestParam(defaultValue="org.jasypt.iv.RandomIvGenerator") String ivGeneratorClassName,
+			@RequestParam(defaultValue="base64") String stringOutputType) {
 		try {
 			StringEncryptor encryptor = stringEncryptor(
 					password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType
@@ -35,14 +35,14 @@ public class JasyptController {
 	
 	@GetMapping("/decrypt")
 	public String decryptString(
-			String input,
-			String password,
-			String algorithm,
-			String keyObtentionIterations,
-			String providerName,
-			String saltGeneratorClassName,
-			String ivGeneratorClassName,
-			String stringOutputType) {
+			@RequestParam(required=true) String input,
+			@RequestParam(required=true) String password,
+			@RequestParam(defaultValue="PBEWITHHMACSHA512ANDAES_256") String algorithm,
+			@RequestParam(defaultValue="1000") String keyObtentionIterations,
+			@RequestParam(defaultValue="SunJCE") String providerName,
+			@RequestParam(defaultValue="org.jasypt.salt.RandomSaltGenerator") String saltGeneratorClassName,
+			@RequestParam(defaultValue="org.jasypt.iv.RandomIvGenerator") String ivGeneratorClassName,
+			@RequestParam(defaultValue="base64") String stringOutputType) {
 		try {
 			StringEncryptor encryptor = stringEncryptor(
 					password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType

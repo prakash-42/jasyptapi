@@ -26,7 +26,26 @@
 	<input class="input-class" type="text" name="password" id="password"> <br>
 
 	<label class="label-class" for="algorithm">algorithm:</label>
-	<input class="input-class" type="text" name="algorithm" id="algorithm" value="PBEWITHHMACSHA512ANDAES_256"> <br>
+	<input class="input-class" list="algorithms" name="algorithm" id="algorithm" value="PBEWITHHMACSHA512ANDAES_256"> <br>
+	<datalist id="algorithms">
+		<option value="PBEWITHHMACSHA1ANDAES_128">
+		<option value="PBEWITHHMACSHA1ANDAES_256">
+		<option value="PBEWITHHMACSHA224ANDAES_128">
+		<option value="PBEWITHHMACSHA224ANDAES_256">
+		<option value="PBEWITHHMACSHA256ANDAES_128">
+		<option value="PBEWITHHMACSHA256ANDAES_256">
+		<option value="PBEWITHHMACSHA384ANDAES_128">
+		<option value="PBEWITHHMACSHA384ANDAES_256">
+		<option value="PBEWITHHMACSHA512ANDAES_128">
+		<option value="PBEWITHHMACSHA512ANDAES_256">
+		<option value="PBEWITHMD5ANDDES">
+		<option value="PBEWITHMD5ANDTRIPLEDES">
+		<option value="PBEWITHSHA1ANDDESEDE">
+		<option value="PBEWITHSHA1ANDRC2_40">
+		<option value="PBEWITHSHA1ANDRC2_128">
+		<option value="PBEWITHSHA1ANDRC4_40">
+		<option value="PBEWITHSHA1ANDRC4_128">
+	</datalist>
 
 	<label class="label-class" for="keyObtentionIterations">keyObtentionIterations:</label>
 	<input class="input-class" type="text" name="keyObtentionIterations" id="keyObtentionIterations" value="1000"> <br>
@@ -38,7 +57,10 @@
 	<input class="input-class" type="text" name="saltGeneratorClassName" id="saltGeneratorClassName" value="org.jasypt.salt.RandomSaltGenerator"> <br>
 
 	<label class="label-class" for="ivGeneratorClassName">ivGeneratorClassName:</label>
-	<input class="input-class" type="text" name="ivGeneratorClassName" id="ivGeneratorClassName" value="org.jasypt.iv.RandomIvGenerator"> <br>
+	<select class="input-class" id="ivGeneratorClassName">
+		<option value="org.jasypt.iv.RandomIvGenerator" selected>org.jasypt.iv.RandomIvGenerator</option>
+		<option value="org.jasypt.iv.NoIvGenerator">org.jasypt.iv.NoIvGenerator</option>
+	</select> <br>
 
 	<label class="label-class" for="stringOutputType">stringOutputType:</label>
 	<input class="input-class" type="text" name="stringOutputType" id="stringOutputType" value="base64"> <br>
@@ -57,6 +79,8 @@
 
 	<button class="submit-button" onclick="submit()">Submit</button><br>
 
-	<label class="result" id="result"></label>
+	<label class="result" id="result"></label> <br> <br>
+
+	<footer class="footer-class">Source: <a href="https://github.com/prakashiit/jasyptapi">https://github.com/prakashiit/jasyptapi</a></footer>
 </body>
 </html>

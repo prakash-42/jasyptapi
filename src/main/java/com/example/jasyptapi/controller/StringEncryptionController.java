@@ -1,7 +1,7 @@
 package com.example.jasyptapi.controller;
 
 import org.jasypt.encryption.StringEncryptor;
-import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +29,7 @@ public class StringEncryptionController {
 					);
 			return encryptor.encrypt(input);
 		} catch (EncryptionOperationNotPossibleException e) {
-			return "Encryption failed. EncryptionOperationNotPossibleException exception occured.";
+			return "[ERROR] Encryption failed. EncryptionOperationNotPossibleException exception occured.";
 		}
 	}
 	
@@ -49,11 +49,11 @@ public class StringEncryptionController {
 					);
 			return encryptor.decrypt(input);
 		} catch (EncryptionOperationNotPossibleException e) {
-			return "Decryption failed. EncryptionOperationNotPossibleException exception occured.";
+			return "[ERROR] Decryption failed. EncryptionOperationNotPossibleException exception occured.";
 		}
 	}
 	
-	public static StringEncryptor stringEncryptor(
+	private static StringEncryptor stringEncryptor(
 			String password,
 			String algorithm,
 			String keyObtentionIterations,
@@ -61,12 +61,11 @@ public class StringEncryptionController {
 			String saltGeneratorClassName,
 			String ivGeneratorClassName,
 			String stringOutputType) {
-        PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
+		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
         config.setPassword(password);
         config.setAlgorithm(algorithm);
         config.setKeyObtentionIterations(keyObtentionIterations);
-        config.setPoolSize("1");
         config.setProviderName(providerName);
         config.setSaltGeneratorClassName(saltGeneratorClassName);
         config.setIvGeneratorClassName(ivGeneratorClassName);

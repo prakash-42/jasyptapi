@@ -159,10 +159,10 @@ function submit() {
 		    contentType: false,   // tell jQuery not to set contentType
 		    success: function(data, textStatus, jqXHR)
 		    {
-		    	var newWin = window.open();
-			    newWin.document.write(data);
+				let filename = mode + "ed-" + inputFile.name;
+				downloadFile(data, filename, inputFile.type);
 			    console.log(data);
-			    result.innerHTML = "SUCCESS!! results sent to a new tab."
+			    result.innerHTML = "SUCCESS!! results logged in console and downloaded as " + filename + ".";
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
@@ -174,4 +174,25 @@ function submit() {
 		    }
 		});
 	}
+}
+
+
+// Copied from: https://stackoverflow.com/a/30832210
+// Function to download data to a file
+function downloadFile(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
 }

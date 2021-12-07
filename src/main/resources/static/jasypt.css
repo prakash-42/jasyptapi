@@ -4,6 +4,7 @@
 	text-align: right;
 	margin-bottom: 2px;
 	font-size: 20px;
+	cursor: text;
 }
 .input-class {
 	margin-bottom: 2px;
@@ -16,6 +17,7 @@
 	width:20px;
 	vertical-align: bottom;
 	margin-bottom: 2px;
+	cursor: pointer;
 }
 
 .submit-button {
@@ -28,4 +30,5 @@
 	margin-top: 20px;
 	text-align: left;
 	font-size: 20px;
+	cursor: text;
 }

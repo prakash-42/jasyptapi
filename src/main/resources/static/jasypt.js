@@ -89,6 +89,40 @@ function submit() {
 		return
 	}
 
+	let encryptedPrefix = "";
+	let encryptedSuffix = "";
+	let decryptedPrefix = "";
+	let decryptedSuffix = "";
+	if(! isStringEncryption) {
+		encryptedPrefix = document.getElementById("encryptedPrefix").value;
+		if(encryptedPrefix.length < 1){
+			let result = document.getElementById("result");
+			result.innerHTML = "encryptedPrefix cannot be blank!";
+			return
+		}
+
+		encryptedSuffix = document.getElementById("encryptedSuffix").value;
+		if(encryptedSuffix.length < 1){
+			let result = document.getElementById("result");
+			result.innerHTML = "encryptedSuffix cannot be blank!";
+			return
+		}
+
+		decryptedPrefix = document.getElementById("decryptedPrefix").value;
+		if(decryptedPrefix.length < 1){
+			let result = document.getElementById("result");
+			result.innerHTML = "decryptedPrefix cannot be blank!";
+			return
+		}
+
+		decryptedSuffix = document.getElementById("decryptedSuffix").value;
+		if(decryptedSuffix.length < 1){
+			let result = document.getElementById("result");
+			result.innerHTML = "decryptedSuffix cannot be blank!";
+			return
+		}
+	}
+
 	let result = document.getElementById("result");
 	result.innerHTML = "Loading...";
 	if(isStringEncryption) {
@@ -116,7 +150,7 @@ function submit() {
 		data.append("inputFile", inputFile);
 
 		// https://stackoverflow.com/a/43108327
-		let params = $.param({password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType});
+		let params = $.param({password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType, encryptedPrefix, encryptedSuffix, decryptedPrefix, decryptedSuffix});
 		jQuery.ajax({
 		    type: 'POST',
 		    url: url + "?" + params,

@@ -159,8 +159,8 @@ function submit() {
 		    contentType: false,   // tell jQuery not to set contentType
 		    success: function(data, textStatus, jqXHR)
 		    {
-				let filename = mode + "ed-" + inputFile.name;
-				downloadFile(data, filename, inputFile.type);
+			    let filename = mode + "ed-" + inputFile.name;
+			    downloadFile(data, filename, inputFile.type);
 			    console.log(data);
 			    result.innerHTML = "SUCCESS!! results logged in console and downloaded as " + filename + ".";
 		    },

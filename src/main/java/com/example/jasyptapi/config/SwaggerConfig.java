@@ -33,10 +33,5 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .contact(new Contact("Prakash Tiwari", "https://github.com/prakashiit",
                         "prakash.tiwari@mykaarma.com")).version("1.0").build();
     }
-    
-    @Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("redirect:/index.html");
-	}
 
 }

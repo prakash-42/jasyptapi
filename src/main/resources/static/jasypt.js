@@ -138,11 +138,12 @@ function submit() {
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
-		        result.innerHTML = "Error occurred!!";
-		        console.log("Error occurred!!");
 		        console.log(jqXHR);
 		        console.log(textStatus);
 		        console.log(errorThrown);
+		        let responseText = jqXHR.responseText;
+		        result.innerHTML = "Error occurred!! " + responseText;
+                console.log("Error occurred!! " + responseText);
 		    }
 		});
 	} else {
@@ -166,11 +167,12 @@ function submit() {
 		    },
 		    error: function (jqXHR, textStatus, errorThrown)
 		    {
-		        result.innerHTML = "Error occurred!!";
-		        console.log("Error occurred!!");
 		        console.log(jqXHR);
-		        console.log(textStatus);
-		        console.log(errorThrown);
+                console.log(textStatus);
+                console.log(errorThrown);
+                let responseText = jqXHR.responseText;
+                result.innerHTML = "Error occurred!! " + responseText;
+                console.log("Error occurred!! " + responseText);
 		    }
 		});
 	}

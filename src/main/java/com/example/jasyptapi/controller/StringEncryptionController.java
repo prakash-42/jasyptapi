@@ -4,6 +4,8 @@ import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 import org.jasypt.exceptions.EncryptionOperationNotPossibleException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StringEncryptionController {
 	
 	@GetMapping("/encrypt")
-	public String encryptString(
+	public ResponseEntity<String> encryptString(
 			@RequestParam(required=true) String input,
 			@RequestParam(required=true) String password,
 			@RequestParam(defaultValue="PBEWITHHMACSHA512ANDAES_256") String algorithm,
@@ -27,14 +29,14 @@ public class StringEncryptionController {
 			StringEncryptor encryptor = stringEncryptor(
 					password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType
 					);
-			return encryptor.encrypt(input);
+			return new ResponseEntity<>(encryptor.encrypt(input), HttpStatus.OK);
 		} catch (EncryptionOperationNotPossibleException e) {
-			return "[ERROR] Encryption failed. EncryptionOperationNotPossibleException exception occured.";
+			return new ResponseEntity<>("[ERROR] Encryption failed. EncryptionOperationNotPossibleException exception occured.", HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@GetMapping("/decrypt")
-	public String decryptString(
+	public ResponseEntity<String> decryptString(
 			@RequestParam(required=true) String input,
 			@RequestParam(required=true) String password,
 			@RequestParam(defaultValue="PBEWITHHMACSHA512ANDAES_256") String algorithm,
@@ -47,9 +49,9 @@ public class StringEncryptionController {
 			StringEncryptor encryptor = stringEncryptor(
 					password, algorithm, keyObtentionIterations, providerName, saltGeneratorClassName, ivGeneratorClassName, stringOutputType
 					);
-			return encryptor.decrypt(input);
+			return new ResponseEntity<>(encryptor.decrypt(input), HttpStatus.OK);
 		} catch (EncryptionOperationNotPossibleException e) {
-			return "[ERROR] Decryption failed. EncryptionOperationNotPossibleException exception occured.";
+			return new ResponseEntity<>("[ERROR] Encryption failed. EncryptionOperationNotPossibleException exception occured.", HttpStatus.BAD_REQUEST);
 		}
 	}
 	

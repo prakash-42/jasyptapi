@@ -1,3 +1,4 @@
+This repo is now archived in favour of https://github.com/mykaarma/jasyptapi
 # jasyptapi
 A wrapper API around jasypt to to easily encrypt/decrypt your sensitive data
 
